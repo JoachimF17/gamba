@@ -1,10 +1,12 @@
 package be.pandapp.gamba.models.entities;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "country")
 public class Country {
