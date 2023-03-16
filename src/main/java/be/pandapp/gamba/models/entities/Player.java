@@ -10,20 +10,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "player")
+@Table(name = "PLAYER")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "PLAYER_ID", nullable = false)
     private Long id;
 
-    @Column(name = "last_name", nullable = false, length = 50)
-    private String lastName;
+    @Column(name = "NAME", nullable = false, length = 50)
+    private String name;
 
-    @Column(name = "first_name", nullable = false, length = 50)
-    private String firstName;
-
-    @Column(name = "role", nullable = false, length = 20)
+    @Column(name = "ROLE", nullable = false, length = 20)
     private String role;
 
 }

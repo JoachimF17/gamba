@@ -4,23 +4,23 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter @Setter
+@AllArgsConstructor @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "team")
+@Table(name = "TEAM")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "TEAM_ID", nullable = false)
     private Long id;
 
-    @Column(name = "team_name", nullable = false, unique = true, length = 50)
-    private String teamName;
+    @Column(name = "NAME", nullable = false, unique = true, length = 50)
+    private String name;
 
-    @Column(name = "logo")
-    private String logo;
+    @Column(name = "LOGO", nullable = false, unique = true)
+    private String flag;
 
+    @Column(name = "COLORS", nullable = false, length = 50)
+    private String colors;
 }

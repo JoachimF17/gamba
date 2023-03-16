@@ -11,20 +11,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "game")
+@Table(name = "GAME")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "GAME_ID", nullable = false)
     private Long id;
 
-    @Column(name = "datetime", nullable = false)
+    @Column(name = "DATETIME", nullable = false)
     private LocalDateTime datetime;
 
-    @Column(name = "score_home_team")
+    @Column(name = "SCORE_HOME_TEAM")
     private Integer scoreHomeTeam;
 
-    @Column(name = "score_away_team")
+    @Column(name = "SCORE_AWAY_TEAM")
     private Integer scoreAwayTeam;
 
 }
