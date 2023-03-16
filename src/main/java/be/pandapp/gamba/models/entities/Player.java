@@ -23,4 +23,8 @@ public class Player {
     @Column(name = "ROLE", nullable = false, length = 20)
     private String role;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
 }

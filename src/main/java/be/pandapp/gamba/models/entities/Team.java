@@ -3,6 +3,8 @@ package be.pandapp.gamba.models.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
@@ -19,8 +21,12 @@ public class Team {
     private String name;
 
     @Column(name = "LOGO", nullable = false, unique = true)
-    private String flag;
+    private String logo;
 
     @Column(name = "COLORS", nullable = false, length = 50)
     private String colors;
+
+    @OneToMany(mappedBy = "team", orphanRemoval = true)
+    private List<Player> players = new ArrayList<>();
+
 }
