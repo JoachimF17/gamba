@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,5 +28,16 @@ public class Game {
 
     @Column(name = "SCORE_AWAY_TEAM")
     private Integer scoreAwayTeam;
+
+    @ManyToOne
+    @JoinColumn(name = "HOME_TEAM_ID")
+    private Team homeTeam;
+
+    @ManyToOne
+    @JoinColumn(name = "AWAY_TEAM_ID")
+    private Team awayTeam;
+
+    @OneToMany(mappedBy = "game", orphanRemoval = true)
+    private List<Bet> bets = new ArrayList<>();
 
 }

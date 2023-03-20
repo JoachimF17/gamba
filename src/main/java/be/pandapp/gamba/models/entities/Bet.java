@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "BET")
 public class Bet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "BET_ID", nullable = false)
@@ -26,5 +27,17 @@ public class Bet {
 
     @Column(name = "MODIFIED_LAST", nullable = false)
     private LocalDateTime modifiedLast;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "USERS_ID", nullable = false)
+    private Users users;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "SCORER_ID", nullable = false)
+    private Player scorer;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "GAME_ID", nullable = false)
+    private Game game;
 
 }

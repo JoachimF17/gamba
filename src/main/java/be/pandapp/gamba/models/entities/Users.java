@@ -3,6 +3,8 @@ package be.pandapp.gamba.models.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,5 +27,12 @@ public class Users {
 
     @Column(name = "SCORE", nullable = false)
     private Integer score;
+
+    @OneToMany(mappedBy = "users", orphanRemoval = true)
+    private List<Bet> bets = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "CLAN_ID")
+    private Clan clan;
 
 }
