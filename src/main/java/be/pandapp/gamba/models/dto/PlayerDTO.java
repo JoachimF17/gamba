@@ -13,7 +13,7 @@ public class PlayerDTO {
     private Long id;
     private String name;
     private String role;
-    private TeamDTO team;
+    private PlayerTeamDTO team;
 
     public PlayerDTO of(Player player) {
         if(player == null) return null;
@@ -22,20 +22,20 @@ public class PlayerDTO {
                 player.getId(),
                 player.getName(),
                 player.getRole(),
-                TeamDTO.of(player.getTeam())
+                PlayerTeamDTO.of(player.getTeam())
         );
     }
 
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class TeamDTO {
+    private static class PlayerTeamDTO {
         private Long id;
         private String name;
 
-        public static TeamDTO of(Team team) {
+        public static PlayerTeamDTO of(Team team) {
             if(team == null) return null;
 
-            return new TeamDTO(
+            return new PlayerTeamDTO(
                     team.getId(),
                     team.getName()
             );

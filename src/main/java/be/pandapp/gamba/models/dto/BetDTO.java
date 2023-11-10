@@ -14,9 +14,9 @@ public class BetDTO {
     private int scoreHomeTeam;
     private int scoreAwayTeam;
     private String modifiedLast;
-    private UsersDTO better;
-    private PlayerDTO scorer;
-    private GameDTO game;
+    private BetUsersDTO better;
+    private BetScorerDTO scorer;
+    private BetGameDTO game;
 
     public static BetDTO of(Bet bet) {
         if(bet == null) return null;
@@ -26,23 +26,23 @@ public class BetDTO {
                 bet.getScoreHomeTeam(),
                 bet.getScoreAwayTeam(),
                 bet.getModifiedLast().toString(), //TODO: better date
-                UsersDTO.of(bet.getUsers()),
-                PlayerDTO.of(bet.getScorer()),
-                GameDTO.of(bet.getGame())
+                BetUsersDTO.of(bet.getUsers()),
+                BetScorerDTO.of(bet.getScorer()),
+                BetGameDTO.of(bet.getGame())
         );
     }
 
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class UsersDTO {
+    private static class BetUsersDTO {
         private Long id;
         private String username;
         private int score;
 
-        public static UsersDTO of(Users users) {
+        public static BetUsersDTO of(Users users) {
             if(users == null) return null;
 
-            return new UsersDTO(
+            return new BetUsersDTO(
                     users.getId(),
                     users.getUsername(),
                     users.getScore()
@@ -52,15 +52,15 @@ public class BetDTO {
 
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class PlayerDTO {
+    private static class BetScorerDTO {
         private Long id;
         private String name;
         private String role;
 
-        public static PlayerDTO of(Player player) {
+        public static BetScorerDTO of(Player player) {
             if(player == null) return null;
 
-            return new PlayerDTO(
+            return new BetScorerDTO(
                     player.getId(),
                     player.getName(),
                     player.getRole()
@@ -70,7 +70,7 @@ public class BetDTO {
 
     @AllArgsConstructor
     @NoArgsConstructor
-    private static class GameDTO {
+    private static class BetGameDTO {
         private Long id;
         private String dateTime;
         private Integer scoreHomeTeam;
@@ -78,10 +78,10 @@ public class BetDTO {
         private String homeTeam;
         private String awayTeam;
 
-        public static GameDTO of(Game game) {
+        public static BetGameDTO of(Game game) {
             if(game == null) return null;
 
-            return new GameDTO(
+            return new BetGameDTO(
                     game.getId(),
                     game.getDatetime().toString(), //TODO: format date
                     game.getScoreHomeTeam(),
