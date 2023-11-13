@@ -1,5 +1,6 @@
 package be.pandapp.gamba.models.forms;
 
+import be.pandapp.gamba.models.entities.Users;
 import lombok.*;
 
 @NoArgsConstructor
@@ -13,4 +14,13 @@ public class UsersForm {
     private String password;
     private Integer score;
     private Long clanId;
+
+    public Users toUsers() {
+        return Users.builder()
+                .id(getId())
+                .username(getUsername())
+                .password(getPassword())
+                .score(getScore())
+                .build();
+    }
 }

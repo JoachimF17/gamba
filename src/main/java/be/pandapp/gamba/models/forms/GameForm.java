@@ -1,5 +1,6 @@
 package be.pandapp.gamba.models.forms;
 
+import be.pandapp.gamba.models.entities.Game;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,4 +17,13 @@ public class GameForm {
     private Integer scoreAwayTeam;
     private Long homeTeamId;
     private Long awayTeamId;
+
+    public Game toGame() {
+        return Game.builder()
+                .id(getId())
+                .datetime(getDatetime())
+                .scoreHomeTeam(getScoreHomeTeam())
+                .scoreAwayTeam(getScoreAwayTeam())
+                .build();
+    }
 }

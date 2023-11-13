@@ -1,5 +1,6 @@
 package be.pandapp.gamba.models.forms;
 
+import be.pandapp.gamba.models.entities.Bet;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -17,4 +18,13 @@ public class BetForm {
     private Long usersId;
     private Long scorerId;
     private Long gameId;
+
+    public Bet toBet() {
+        return Bet.builder()
+                .id(getId())
+                .scoreHomeTeam(getScoreHomeTeam())
+                .scoreAwayTeam(getScoreAwayTeam())
+                .modifiedLast(getModifiedLast())
+                .build();
+    }
 }
