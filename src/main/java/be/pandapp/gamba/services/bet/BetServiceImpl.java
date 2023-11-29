@@ -11,6 +11,7 @@ import be.pandapp.gamba.repos.UsersRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BetServiceImpl implements BetService{
@@ -51,16 +52,25 @@ public class BetServiceImpl implements BetService{
 
     @Override
     public BetDTO updateById(Long id, BetForm form) {
-        return null;
+        Bet bet = betRepository.findById(id).orElseThrow(() -> new IdNotFoundException(id));
+
+        bet.setScoreHomeTeam(form.getScoreHomeTeam());
+        bet.setScoreAwayTeam(form.getScoreAwayTeam());
+        bet.setScorer(playerRepository.findById(form.getScorerId())
+                .orElseThrow(() -> new IdNotFoundException(form.getScorerId())));
+
+        return BetDTO.of(betRepository.save(bet));
     }
 
     @Override
     public BetDTO deleteById(Long id) {
-        return null;
+        BetDTO betDTO = getOneById(id);
+        betRepository.deleteById(id);
+        return betDTO;
     }
 
     @Override
     public List<BetDTO> getAll() {
-        return null;
+        return betRepository.findAll().stream().map(BetDTO::of).collect(Collectors.toList());
     }
 }
