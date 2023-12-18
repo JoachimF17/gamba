@@ -15,7 +15,7 @@ public class PlayerDTO {
     private String role;
     private PlayerTeamDTO team;
 
-    public PlayerDTO of(Player player) {
+    public static PlayerDTO of(Player player) {
         if(player == null) return null;
 
         return new PlayerDTO(
